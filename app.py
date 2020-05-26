@@ -39,7 +39,7 @@ def remote_execute():
         req_json = json.loads(req_data)
         func_name = req_json.get('func_name', False)
         if not func_name:
-            return 'Please explain your intention!(by curl)\r\n'
+            return 'Please explain your intention!(by post)\r\n'
         func_param = req_json.get('func_param', False)
         return real_execute(func_name=func_name, func_param=func_param)
     elif req_method == 'GET':
