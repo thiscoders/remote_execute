@@ -35,6 +35,9 @@ def real_execute(func_name=False, func_param=False):
 @app.route('/execute', methods=['GET', 'POST'])
 def remote_execute():
     req_method = request.method
+    req_user_agent = request.user_agent.string
+    if 'curl' not in req_user_agent:
+        return "Use the curl command on the terminal.<br/><br/>curl 'http://127.0.0.1:5000/execute?func_name=hostname'"
     if req_method == 'POST':
         req_data = request.get_data()
         req_json = json.loads(req_data)
