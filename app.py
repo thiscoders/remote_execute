@@ -36,7 +36,8 @@ def real_execute(func_name=False, func_param=False):
 def remote_execute():
     req_method = request.method
     req_user_agent = request.user_agent.string
-    if 'curl' not in req_user_agent:
+    # 'Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.19041.1'
+    if 'curl' not in req_user_agent and 'PowerShell' not in req_user_agent:
         return "Use the curl command on the terminal.<br/><br/>curl 'http://127.0.0.1:5000/execute?func_name=hostname'"
     if req_method == 'POST':
         req_data = request.get_data()
