@@ -20,7 +20,8 @@ def logout_app():
 
 
 def real_execute(func_name=False, func_param=False):
-    shell_path = os.getcwd() + '/shell/' + func_name + '.sh'
+    base_dir = os.path.split(os.path.abspath(__file__))[0]
+    shell_path = base_dir + '/shell/' + func_name + '.sh'
     is_file = os.path.isfile(shell_path)
     if not is_file:
         return 'Your intention does not exist!\r\n'
